@@ -1,14 +1,8 @@
 library(mgcv)
 library(ggplot2)
-library(eoffice)
+
 data1<-read.csv("GAM5.csv", header = T)
-#case1 from Brumovsk et al., Contaminants of emerging concern in the open sea waters of the Western Mediterranean. Environmental Pollution 229 (2017) 976-983
-GAM1 <- gam(log(NASA1)~s(number1,k=4),data=data1,method="REML",select=TRUE)
-#case2 from Brumovsky et al., Line ferries and cargo ships for the monitoring of marine contaminants of emerging concern: Application along a Europe-Arctic transect. Journal of Hazardous Materials 424 (2022) 127232
-GAM2 <- gam(log(OCCCI2)~s(number2,k=4),data=data1,method="REML",select=TRUE)
-#case 3 from Brumovsky et al., Exploring the occurrence and distribution of contaminants of emerging concern through unmanned sampling from ships of opportunity in the North Sea. Journal of Marine Systems 162 (2016) 47¨C56
-GAM3 <- gam(NPP3~s(number3,k=7),data=data1,method="REML",select=TRUE)
-#case 4 from merga et al., Biological and chemical monitoring of the ecological risks of pesticides in Lake Ziway, Ethiopia. Chemosphere 266 (2021) 129214
+#case 1 from merga et al., Biological and chemical monitoring of the ecological risks of pesticides in Lake Ziway, Ethiopia. Chemosphere 266 (2021) 129214
 GAM4 <- gam(Shannon_W4~s(number4,k=7),data=data1,method="REML",select=TRUE)
 GAM4_1 <- gam(Menhinick4~s(number4,k=7),data=data1,method="REML",select=TRUE)
 GAM4_2 <- gam(Shannon_W4~s(pH4,k=7),data=data1,method="REML",select=TRUE)
@@ -17,14 +11,14 @@ GAM4_4 <- gam(Shannon_W4~s(temperature4,k=7),data=data1,method="REML",select=TRU
 GAM4_5 <- gam(Menhinick4~s(temperature4,k=7),data=data1,method="REML",select=TRUE)
 GAM4_6 <- gam(Shannon_W4~s(DO4,k=7),data=data1,method="REML",select=TRUE)
 GAM4_7 <- gam(Menhinick4~s(DO4,k=7),data=data1,method="REML",select=TRUE)
-#case5 from Bayen et al., Pharmaceutically active compounds and endocrine disrupting chemicals in water, sediments and mollusks in mangrove ecosystemsfrom Singapore. Marine Pollution Bulletin 109 (2016) 716¨C722
+#case 2 from Bayen et al., Pharmaceutically active compounds and endocrine disrupting chemicals in water, sediments and mollusks in mangrove ecosystemsfrom Singapore. Marine Pollution Bulletin 109 (2016) 716â€“722
 GAM5 <- gam(inverbiomass5~s(number5,k=6),data=data1,method="REML",select=TRUE)
 GAM5_1 <- gam(inverbiomass5~s(pH5,k=7),data=data1,method="REML",select=TRUE)
 GAM5_2 <- gam(inverbiomass5~s(conductivity5,k=7),data=data1,method="REML",select=TRUE)
 GAM5_3 <- gam(inverbiomass5~s(temperature5,k=7),data=data1,method="REML",select=TRUE)
 GAM5_4 <- gam(inverbiomass5~s(DO5,k=7),data=data1,method="REML",select=TRUE)
 GAM5_5 <- gam(inverbiomass5~s(salinity5,k=7),data=data1,method="REML",select=TRUE)
-#case6 from The 2013¨C2017 U.S. Geological Survey (USGS) Regional Stream Quality Assessments (RSQA); Science of the Total Environment 773 (2021) 145062 and Science of the Total Environment 800 (2021) 149350
+#case 3 from The 2013â€“2017 U.S. Geological Survey (USGS) Regional Stream Quality Assessments (RSQA); Science of the Total Environment 773 (2021) 145062 and Science of the Total Environment 800 (2021) 149350
 GAM6 <- gam(BENTMMI6~s(number6,k=6),data=data1,method="REML",select=TRUE)
 GAM6_1 <- gam(FSPTAX6~s(number6,k=7),data=data1,method="REML",select=TRUE)
 GAM6_2 <- gam(FMMI6~s(number6,k=7),data=data1,method="REML",select=TRUE)
@@ -53,7 +47,7 @@ GAM6_24 <- gam(BENTMMI6~s(conductivity6,k=6),data=data1,method="REML",select=TRU
 GAM6_25 <- gam(FSPTAX6~s(conductivity6,k=7),data=data1,method="REML",select=TRUE)
 GAM6_26 <- gam(FMMI6~s(conductivity6,k=7),data=data1,method="REML",select=TRUE)
 GAM6_27 <- gam(BC456~s(conductivity6,k=7),data=data1,method="REML",select=TRUE)
-#case7 from Scarce-consolider project
+#case 4 from Catala et al., Invertebrate community responses to emerging water pollutants in Iberian river basins. Sci. Total Environ. 503-504, 142-150.
 GAM7 <- gam(log(inverabunt7)~s(number7,k=7),data=data1,method="REML",select=TRUE)
 GAM7_1 <- gam(log(inverabunt7)~s(pH7,k=7),data=data1,method="REML",select=TRUE)
 GAM7_2 <- gam(log(inverabunt7)~s(temperature7,k=7),data=data1,method="REML",select=TRUE)
@@ -61,7 +55,7 @@ GAM7_3 <- gam(log(inverabunt7)~s(DO7,k=7),data=data1,method="REML",select=TRUE)
 GAM7_4 <- gam(log(inverabunt7)~s(conductivity7,k=7),data=data1,method="REML",select=TRUE)
 GAM7_5 <- gam(log(inverabunt7)~s(TP7,k=7),data=data1,method="REML",select=TRUE)
 GAM7_6 <- gam(log(inverabunt7)~s(DOC7,k=7),data=data1,method="REML",select=TRUE)
-#case8 from Wang et al., Organic Micropollutants in New York Lakes: A Statewide Citizen Science Occurrence Study. Environ. Sci. Technol. 2020, 54, 13759???13770
+#case 5 from Wang et al., Organic Micropollutants in New York Lakes: A Statewide Citizen Science Occurrence Study. Environ. Sci. Technol. 2020, 54, 13759???13770
 GAM8 <- gam(log(nor_chloro8)~s(number8, bs="cr"),data=data1,method="REML",select=TRUE)
 GAM8_1 <- gam(log(chlorophyll8)~s(pH8, bs="cr"),data=data1,method="REML",select=TRUE)
 GAM8_2 <- gam(log(chlorophyll8)~s(conductivity8, bs="cr"),data=data1,method="REML",select=TRUE)
@@ -73,6 +67,12 @@ GAM8_7 <- gam(log(chlorophyll8)~s(agricularea8, bs="cr"),data=data1,method="REML
 GAM8_8 <- gam(log(chlorophyll8)~s(urbanarea8, bs="cr"),data=data1,method="REML",select=TRUE)
 GAM8_9 <- gam(log(chlorophyll8)~s(forestarea8, bs="cr"),data=data1,method="REML",select=TRUE)
 GAM8_10 <- gam(log(chlorophyll8)~s(lakearea8, bs="cr"),data=data1,method="REML",select=TRUE)
+#case 6 from Brumovsk et al., Contaminants of emerging concern in the open sea waters of the Western Mediterranean. Environmental Pollution 229 (2017) 976-983
+GAM1 <- gam(log(NASA1)~s(number1,k=4),data=data1,method="REML",select=TRUE)
+#case 7 from Brumovsky et al., Line ferries and cargo ships for the monitoring of marine contaminants of emerging concern: Application along a Europe-Arctic transect. Journal of Hazardous Materials 424 (2022) 127232
+GAM2 <- gam(log(OCCCI2)~s(number2,k=4),data=data1,method="REML",select=TRUE)
+#case 8 from Brumovsky et al., Exploring the occurrence and distribution of contaminants of emerging concern through unmanned sampling from ships of opportunity in the North Sea. Journal of Marine Systems 162 (2016) 47â€“56
+GAM3 <- gam(NPP3~s(number3,k=7),data=data1,method="REML",select=TRUE)
 #case9 from Tornes et al., Diatom responses to sewage inputs and hydrological alteration in Mediterranean streams. Environmental Pollution 238 (2018) 369-378
 GAM9 <- gam(cyanobacteria_abundant9~s(number9, bs="cr"),data=data1,method="REML",select=TRUE)
 GAM9_1 <- gam(algae_richness9~s(number9, bs="cr"),data=data1,method="REML",select=TRUE)
@@ -100,7 +100,7 @@ GAM11_2 <- gam(log(inver_richess)~s(DO11, k=5),data=data1,method="REML",select=T
 GAM11_3 <- gam(log(inver_richess)~s(conductivity11, k=5),data=data1,method="REML",select=TRUE)
 GAM11_4 <- gam(log(inver_richess)~s(TP11, k=5),data=data1,method="REML",select=TRUE)
 GAM11_5 <- gam(log(inver_richess)~s(TN11, k=5),data=data1,method="REML",select=TRUE)
-#case12 from Fisch et al., Seasonal variability, long-term distribution (2001¨C2014), and risk assessment of polar organic micropollutants in the Baltic Sea. Environmental Science and Pollution Research (2021) 28:39296¨C39309
+#case12 from Fisch et al., Seasonal variability, long-term distribution (2001â€“2014), and risk assessment of polar organic micropollutants in the Baltic Sea. Environmental Science and Pollution Research (2021) 28:39296â€“39309
 GAM12 <- gam(log(NPP12)~s(number12, bs="cr"),data=data1,method="REML",select=TRUE)
 #case13 from Peng et al., Double constrained ordination for assessing biological trait responses to multiple stressors: A case study with benthic macroinvertebrate communities. Science of the Total Environment 754 (2021) 142171
 GAM13 <- gam(chloro_TN_NO3_TP13~s(number13, bs="cr"),data=data1,method="REML",select=TRUE)
@@ -381,7 +381,6 @@ summary(GAM13_30)
 summary(GAM13_31)
 summary(GAM13_32)
 
-#color,#00abf0,#d75427,#3cb346,#e20612,#ffd401,#00b0eb
 par(mfrow = c(3,3))
 plot(GAM1, pch = 19, col="#3cb346",cex=1,lwd=2,shade = TRUE, residuals = TRUE,tck=-0.02)
 plot(GAM2, pch = 19, col="red",cex=1,lwd=2,shade = TRUE, residuals = TRUE,tck=-0.02)
@@ -389,7 +388,7 @@ plot(GAM3, pch = 19, col="blue",cex=1,lwd=2,shade = TRUE, residuals = TRUE,tck=-
 plot(GAM4, pch = 17, col="#2DB600FF",cex=1.1,lwd=2,shade = TRUE, residuals = TRUE,tck=-0.02)
 plot(GAM4_1, pch = 17, col="#2DB600FF",cex=1.1,lwd=2,shade = TRUE, residuals = TRUE,tck=-0.02)
 plot(GAM5, pch = 18,col="#408DC3",cex=1.1,lwd=2, shade = TRUE, residuals = TRUE,tck=-0.02)
-topptx(filename ="18EPGAM1.pptx")
+
 par(mfrow = c(3,3))
 plot(GAM6, pch = 17, col="#e8490f",cex=1.1,lwd=2,shade = TRUE, residuals = TRUE,tck=-0.02)
 plot(GAM6_1, pch = 17, col="#e8490f",cex=1.1,lwd=2,shade = TRUE, residuals = TRUE,tck=-0.02)
@@ -397,7 +396,7 @@ plot(GAM6_2, pch = 17, col="#e8490f",cex=1.1,lwd=2,shade = TRUE, residuals = TRU
 plot(GAM6_3, pch = 17, col="#e8490f",cex=1.1,lwd=2,shade = TRUE, residuals = TRUE,tck=-0.02)
 plot(GAM7, pch = 19, col="#443B84FF",cex=1,lwd=2,shade = TRUE, residuals = TRUE,tck=-0.02)
 plot(GAM8, pch = 17, col="#75D054FF",cex=1.1,lwd=2,shade = TRUE, residuals = TRUE,tck=-0.02)
-topptx(filename ="18EPGAM2.pptx")
+
 par(mfrow = c(3,3))
 plot(GAM9, pch = 15, col="#75D054FF",cex=1.1,lwd=2,shade = TRUE, residuals = TRUE,tck=-0.02)
 plot(GAM9_1, pch = 15, col="#75D054FF",cex=1.1,lwd=2,shade = TRUE, residuals = TRUE,tck=-0.02)
@@ -408,6 +407,5 @@ plot(GAM12, pch = 3, col="#75D054FF",cex=1.1,lwd=2,shade = TRUE, residuals = TRU
 plot(GAM13, pch = 19, col="#942d8d",cex=1,lwd=2,shade = TRUE, residuals = TRUE,tck=-0.02)
 plot(GAM13_1, pch = 19, col="#942d8d",cex=1,lwd=2,shade = TRUE, residuals = TRUE,tck=-0.02)
 plot(GAM13_2, pch = 19, col="#942d8d",cex=1,lwd=2,shade = TRUE, residuals = TRUE,tck=-0.02)
-topptx(filename ="18EPGAM3.pptx")
 
 
