@@ -2,11 +2,11 @@ library(lme4)
 library(Matrix)
 library(lmerTest)
 library(MuMIn)
-#read data
 data<-read.csv("Linear_mixed_models.csv", header = T) 
 str(data)
 summary(data)
 fit1<-lmer(celldivision~EOCnumber+overlap+(1|regime)+(1|algae)+(1|light)+(1|concentration)+(1|temperature)+(1|replicate), REML=T, data)
+#celldivision is the growth rates of two algae
 summary(fit1)
 anova(fit1)
 ranova(fit1)
