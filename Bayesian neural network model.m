@@ -44,4 +44,3 @@ data3=data2';
 r=net(data3);
 R=r';
 xlswrite("C:\Users\chen-\Desktop\predection.xlsx",R,"6#","A2");
-
